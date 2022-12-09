@@ -60,6 +60,9 @@ export class ModalComponent implements OnInit {
 
 
   dataItems:productData  = this.shared.getData()
+  res = this.shared.getid()
+
+
   tranfer: apidata = {
     quotationId: "",
     shopifyProductId : "",
@@ -74,29 +77,22 @@ export class ModalComponent implements OnInit {
     productQuoteId:""
   }
 
-  async createdata(res,data){
-    
-    this.tranfer.productName = data.productName;
+  async update(data){
+
+
+    try{
+      this.tranfer.productName = data.productName;
     this.tranfer.targetPrice = data.price;
     this.tranfer.targetQuantity = data.quantity;
-    this.tranfer.quotationId = res.quotationId;
+    this.tranfer.quotationId = this.res.quotationId;
     this.tranfer.productDescription = this.dataItems.productDescription;
     this.tranfer.productQuoteId = this.dataItems.shopifyProductId
 
    console.log(this.tranfer)
 
    await this.http.post('https://backend.spdash.in/products/quote/create', this.tranfer).subscribe(
-   (response) => console.log(response),
+   (response) => {console.log(response); alert("Added successfully");},
    (error) => console.log(error))
-  }
-
-  async update(data){
-
-
-    try{
-      await this.http.post('https://backend.spdash.in/quotation/create/draft/satvik@hnh.com', this.tranfer).subscribe(
-      (response) => this.createdata(response, data),
-      (error) => console.log(error))
 
     } catch (e){
         console.log(e)

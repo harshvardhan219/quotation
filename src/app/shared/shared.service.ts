@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SharedService {
   message: any;
+  qid:any;
 
   constructor(private http : HttpClient) { }
 
@@ -15,6 +16,14 @@ export class SharedService {
 
   getData(){
     return this.message
+  }
+
+  setid(id){
+    this.qid = id
+  }
+
+  getid(){
+    return this.qid
   }
 
   getSearchProductName(name:String){

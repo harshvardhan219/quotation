@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared/shared.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +11,14 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   numbers: number[];
 
-  constructor() {
+  constructor(private shared: SharedService,private http: HttpClient, private router: Router) {
     this.numbers = Array(5).fill(0).map((x,i)=>i);
    }
 
-  getQuotation(){
-
-    
-
+  async getQuotation(){
+    await this.http.post('https://backend.spdash.in/quotation/create/draft/satvik@hnh.com', "").subscribe(
+      (response) => {console.log(response);this.shared.setid(response); this.router.navigateByUrl('dashboard')},
+      (error) => console.log(error))
   }
 
 
