@@ -18,6 +18,7 @@ import { BillingComponent } from './billing/billing.component';
 import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     // * MATERIAL IMPORTS
     MatSidenavModule,
     MatToolbarModule,

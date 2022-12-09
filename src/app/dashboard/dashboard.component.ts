@@ -13,9 +13,10 @@ export class DashboardComponent implements OnInit {
 
   constructor(private dialogRef : MatDialog, private shared: SharedService) { }
 
-  openDialogue($event : Event){
-    $event.preventDefault()
-    
+  openDialogue(event : Event, ProdData:any){
+    console.log(ProdData);
+    this.shared.setData(ProdData)
+    event.preventDefault()
     this.dialogRef.open(ModalComponent)
   }
 

@@ -12,6 +12,13 @@ export class HomeComponent implements OnInit {
     this.numbers = Array(5).fill(0).map((x,i)=>i);
    }
 
+  getQuotation(){
+
+    
+
+  }
+
+
   ngOnInit(): void {
   }
 

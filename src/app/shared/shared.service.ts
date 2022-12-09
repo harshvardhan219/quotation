@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  message: string;
+  message: any;
 
   constructor(private http : HttpClient) { }
 
@@ -20,7 +19,7 @@ export class SharedService {
 
   getSearchProductName(name:String){
     const response = new Promise(resolve => {
-      this.http.get(environment.apiURL+`${name}`).subscribe( data => {
+      this.http.get('https://backend.spdash.in/products/searchShopifyProducts/'+`${name}`).subscribe( data => {
         resolve(data)
       }, err => {
         console.log(err)
@@ -28,4 +27,17 @@ export class SharedService {
     });
     return response;
   }
+
+  getSearchid(name:String){
+    const response = new Promise(resolve => {
+      this.http.get('https://backend.spdash.in/products/searchShopifyProducts/'+`${name}`).subscribe( data => {
+        resolve(data)
+      }, err => {
+        console.log(err)
+      });
+    });
+    return response;
+  }
+
+
 }

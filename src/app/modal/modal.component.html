@@ -1,31 +1,29 @@
 <div class="card border-light mb-3" style="width: 40rem;" >
-    <form>
+    <form #editForm='ngForm' (ngSubmit)="update(editForm.value)">
         <div class="form-group">
-          <label for="formGroupExampleInput">Product Name</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+          <label for="formGroupExampleInput"><b>Product Name</b></label>
+          <input type="productName" class="form-control" id="formGroupExampleInput" 
+          placeholder="Example input" [ngModel]="dataItems.productName" 
+          #productName="ngModel" name="productName" [value]="dataItems.productName">
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">Description</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-        </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Comments</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+          <label for="formGroupExampleInput2"><b>Description</b></label>
+          <div [innerHTML]="dataItems.productDescription"></div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col">
-                <label for="formGroupExampleInput2">Attach File</label>
-              <input type="text" class="form-control" placeholder="Attach File">
+                <label for="formGroupExampleInput2"><b>Quantity</b></label>
+              <input type="quantity" name="quantity" class="form-control" placeholder="Attach File" [ngModel]="dataItems.quantity">
             </div>
             <div class="col">
-                <label for="formGroupExampleInput2">Price</label>
-              <input type="text" class="form-control" placeholder="Final Price">
+                <label for="formGroupExampleInput2"><b>Price</b></label>
+              <input type="text" name="price" class="form-control" value=" {{ dataItems.price}} " placeholder="Final Price" [ngModel]="dataItems.price">
             </div>
           </div>
           </div>
             <div class="form-group " style="text-align: right; margin-top: 15px;">
-                <button type="button" class="btn btn-outline-primary">Add</button>
+                <button type="submit" class="btn btn-outline-primary">Add</button>
             </div>
       </form>
 </div>

@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://backend.spdash.in/products/searchShopifyProducts/'
 };
 
 /*
